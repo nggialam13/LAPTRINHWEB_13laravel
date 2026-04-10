@@ -44,6 +44,22 @@
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
+
+                                  <div class="form-group mb-3">
+                                    <input type="text"   placeholder="like" id="like" class="form-control"
+                                           name="like" required autofocus>
+                                    @if ($errors->has('like'))
+                                        <span class="text-danger">{{ $errors->first('like') }}</span>
+                                    @endif
+                                </div>
+                                   <div class="form-group mb-3">
+                                    <input type="text"   placeholder="role" id="role" class="form-control"
+                                           name="role" required autofocus>
+                                    @if ($errors->has('role'))
+                                        <span class="text-danger">{{ $errors->first('role') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group mb-3">
                                     <input type="password" placeholder="Password" id="password" class="form-control"
                                            name="password" required>

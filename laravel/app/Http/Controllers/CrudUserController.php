@@ -30,6 +30,7 @@ class CrudUserController extends Controller
         $request->validate([
             'email' => 'required',
             'password' => 'required',
+            
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -59,13 +60,19 @@ class CrudUserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'like' => 'required',
+            'role' => 'required',
+           
         ]);
 
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+                'like' => $data['like'],
+                'role' => $data['role'],
             'password' => Hash::make($data['password'])
+           
         ]);
 
         return redirect("login");
@@ -100,6 +107,7 @@ class CrudUserController extends Controller
     {
         $user_id = $request->get('id');
         $user = User::find($user_id);
+      
 
         return view('crud_user.update', ['user' => $user]);
     }
@@ -113,6 +121,8 @@ class CrudUserController extends Controller
         'name' => 'required',
         'email' => 'required|email|unique:users,email,' . $request->id,
         'password' => 'required|min:6',
+        'like' => 'required',
+        'role' => 'required',
     ]);
 
     $user = User::find($request->id);
@@ -120,8 +130,11 @@ class CrudUserController extends Controller
     // update
     $user->name = $request->name;
     $user->email = $request->email;
+    $user->like = $request->like;
+    $user->role = $request->role;
     $user->password = Hash::make($request->password);  // mã hoá mật khẩu
     $user->save();
+    
 
     return redirect("list")->withSuccess('User updated successfully');
 }

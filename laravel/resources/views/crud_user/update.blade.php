@@ -22,6 +22,15 @@
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
+                                 {{-- phone --}}
+                                <div class="form-group mb-3">
+                                    <input type="text" placeholder="Phone" id="phone" class="form-control"
+                                           name="phone" value="{{ $user->phone }}" required autofocus>
+
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
+                                </div>
 
                                 {{-- EMAIL --}}
                                 <div class="form-group mb-3">
@@ -33,6 +42,27 @@
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
+                                   {{-- LIKE --}}
+                                <div class="form-group mb-3">
+                                    <input type="like"  placeholder="like" id="like"
+                                           class="form-control" name="like" value="{{ $user->like }}"
+                                           required>
+
+                                    @if ($errors->has('like'))
+                                        <span class="text-danger">{{ $errors->first('like') }}</span>
+                                    @endif
+                                </div>
+                                      {{-- ROLE --}}
+                                <div class="form-group mb-3">
+                                    <input type="text"  placeholder="role" id="role"
+                                           class="form-control" name="role" value="{{ $user->role }}"
+                                           required>
+
+                                    @if ($errors->has('role'))
+                                        <span class="text-danger">{{ $errors->first('role') }}</span>
+                                    @endif
+                                </div>
+
 
                                 {{-- PASSWORD --}}
                                 <div class="form-group mb-3">
